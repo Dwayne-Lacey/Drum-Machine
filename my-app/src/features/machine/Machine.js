@@ -11,10 +11,10 @@ export function Machine() {
   const dispatch = useDispatch();
   const btn1Ref = useRef(null);
 
-  function handleClick(source) {
+  const handleClick = (source) => {
     dispatch(setSourceText(source));
     btn1Ref.current.play();
-  }
+    };
 
   return (
     <div id="drum-machine">
@@ -23,13 +23,13 @@ export function Machine() {
           className="drum-pad"
           id="drum-1"
           aria-label="Drum 1"
-          onClick={handleClick("Drum 1")}
+          onClick={() => {handleClick("Drum 1")}}
         >
           Q
           <audio
-          src="drum1.mp3"
           id="Q"
           className="clip"
+          src="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3"
           ref={btn1Ref}
           />
         </button>
@@ -42,4 +42,4 @@ export function Machine() {
       </div>
     </div>
   );
-}
+  }
