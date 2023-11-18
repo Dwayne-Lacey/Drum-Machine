@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import machineReducer from '../features/machine/machineSlice';
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    machine: machineReducer,
   },
 });
