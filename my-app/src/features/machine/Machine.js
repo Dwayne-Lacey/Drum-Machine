@@ -13,6 +13,7 @@ export function Machine() {
 
   const handleClick = (source) => {
     dispatch(setSourceText(source));
+    btn1Ref.current.currentTime = 0;
     btn1Ref.current.play();
     };
 
