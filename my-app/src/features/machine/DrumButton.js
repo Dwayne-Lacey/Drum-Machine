@@ -1,20 +1,23 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSourceText,
-        selectSound } from './machineSlice';
+        selectSound,
+        selectVolume } from './machineSlice';
 import styles from './DrumButton.module.css';
 
 export function DrumButton(props) {
-const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const ref = useRef(null);
     const soundOn = useSelector(selectSound);
+    const volume = useSelector(selectVolume);
 
     const handleClick = useCallback(
         (source) => {
         dispatch(setSourceText(source));
         ref.current.currentTime = 0;
+        ref.current.volume = volume;
         ref.current.play();
-        }, [dispatch, ref])
+        }, [dispatch, ref, volume])
     
     const handleKeyPress = useCallback(
         (e) => {

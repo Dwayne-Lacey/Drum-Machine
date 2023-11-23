@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   value: "",
-  soundOn: true
+  soundOn: true,
+  volume: 0.5
 };
 
 
@@ -27,6 +28,7 @@ export const { setSourceText, setSound } = machineSlice.actions;
 // Selector for current sound source description - ie: Drum 1, Heater 2, Synth 3, etc.
 export const selectSourceText = (state) => state.machine.value;
 export const selectSound = (state) => state.machine.soundOn;
+export const selectVolume = (state) => state.machine.volume;
 
 
 export default machineSlice.reducer;
