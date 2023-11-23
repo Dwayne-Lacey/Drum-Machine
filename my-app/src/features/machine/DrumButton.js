@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setSourceText,
         selectSound } from './machineSlice';
 import styles from './DrumButton.module.css';
 
-export function DrumButton() {
+export function DrumButton(props) {
 const dispatch = useDispatch();
   const ref = useRef(null);
   const soundOn = useSelector(selectSound);
@@ -14,16 +14,17 @@ const dispatch = useDispatch();
     ref.current.currentTime = 0;
     ref.current.play();
     };
+    console.log(props);
 
   return (
     // Props to pass in for buttons, buttonName, soundSrc, buttonKey
     <button
         className="drum-pad"
-        id={buttonName}
-        aria-label={buttonName.replace("-", " ")}
-        onClick={() => {handleClick(buttonName.replace("-", " "))}}
+        id={props.buttonName}
+        aria-label={props.buttonName.replace("-", " ")}
+        onClick={() => {handleClick(props.buttonName.replace("-", " "))}}
     >
-        {buttonKey}
+        {props.buttonKey}
         {soundOn && 
             <audio
             id={props.buttonKey}
