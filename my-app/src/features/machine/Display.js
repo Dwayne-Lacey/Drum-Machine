@@ -4,7 +4,8 @@ import { selectSourceText,
         selectVolume,
         setVolume,
         setSound,
-        selectSound } from './machineSlice';
+        selectSound,
+        setAltSounds } from './machineSlice';
 import styles from './Display.module.css';
     
 export function Display() {
@@ -16,17 +17,21 @@ export function Display() {
     const changeVolume = useCallback(
         (e) => {
             dispatch(setVolume(e.target.value));
-        }, [setVolume, dispatch]);
+        }, [dispatch]);
     
-    const handleClick = () => {
+    const powerSwitch = () => {
         dispatch(setSound());
     }
+
+    const altSoundSwitch = () => {
+        dispatch(setAltSounds())
+    };
     
     
     return (
     <div className={styles.displayContainer}>
-        <div className={styles.powerContainer}>
-            <button className={styles.powerBtn} onClick={handleClick}>
+        <div className={styles.buttonContainer}>
+            <button className={styles.Button} onClick={powerSwitch}>
                 power
             </button>
         </div>
@@ -44,6 +49,12 @@ export function Display() {
         type="range"
         value={volume}
         />
+        <div className={styles.buttonContainer}>
+            <button className={styles.Button} onClick={altSoundSwitch}>
+                alt sounds
+            </button>
+        </div>
+
     </div>
     )
     }
