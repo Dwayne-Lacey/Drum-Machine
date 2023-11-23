@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSourceText,
         selectSound } from './machineSlice';
@@ -6,15 +6,29 @@ import styles from './DrumButton.module.css';
 
 export function DrumButton(props) {
 const dispatch = useDispatch();
-  const ref = useRef(null);
-  const soundOn = useSelector(selectSound);
+    const ref = useRef(null);
+    const soundOn = useSelector(selectSound);
 
-  const handleClick = (source) => {
-    dispatch(setSourceText(source));
-    ref.current.currentTime = 0;
-    ref.current.play();
-    };
-    console.log(props);
+    const handleClick = useCallback(
+        (source) => {
+        dispatch(setSourceText(source));
+        ref.current.currentTime = 0;
+        ref.current.play();
+        }, [dispatch, ref])
+    
+    const handleKeyPress = useCallback(
+        (e) => {
+            if (e.keyCode === props.keyCode) {
+                handleClick(props.buttonName.replace("-", " "));
+            }
+        }, [handleClick, props.keyCode, props.buttonName]
+    );
+
+    useEffect(() => {
+        document.addEventListener("keydown", handleKeyPress);
+        return () => document.removeEventListener("keydown", handleKeyPress);
+    }, [handleKeyPress]);
+
 
   return (
     // Props to pass in for buttons, buttonName, soundSrc, buttonKey
