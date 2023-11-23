@@ -19,11 +19,14 @@ export const machineSlice = createSlice({
     },
     setSound: (state) => {
       state.soundOn = !state.soundOn;
+    },
+    setVolume: (state, action) => {
+      state.volume = action.payload;
     }
   }
 });
 
-export const { setSourceText, setSound } = machineSlice.actions;
+export const { setSourceText, setSound, setVolume } = machineSlice.actions;
 
 // Selector for current sound source description - ie: Drum 1, Heater 2, Synth 3, etc.
 export const selectSourceText = (state) => state.machine.value;
