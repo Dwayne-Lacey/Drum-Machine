@@ -31,8 +31,11 @@ export function Display() {
             </button>
         </div>
         <h1 className={styles.display} id="display">
-          {soundOn && sourceText}
+            {soundOn && sourceText}
         </h1>
+        <h2 className={styles.volumeTitle}>
+            {"Volume: " + Math.round(volume * 100) + "%"}
+        </h2>
         <input 
         max="1"
         min="0"
