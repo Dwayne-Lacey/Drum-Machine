@@ -2,12 +2,15 @@ import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectSourceText, 
         selectVolume,
-        setVolume } from './machineSlice';
+        setVolume,
+        setSound,
+        selectSound } from './machineSlice';
 import styles from './Display.module.css';
     
 export function Display() {
     const sourceText = useSelector(selectSourceText);
     const volume = useSelector(selectVolume);
+    const soundOn = useSelector(selectSound);
     const dispatch = useDispatch();
 
     const changeVolume = useCallback(
@@ -15,16 +18,20 @@ export function Display() {
             dispatch(setVolume(e.target.value));
         }, [setVolume, dispatch]);
     
+    const handleClick = () => {
+        dispatch(setSound());
+    }
+    
     
     return (
     <div className={styles.displayContainer}>
         <div className={styles.powerContainer}>
-            <button className={styles.powerBtn}>
+            <button className={styles.powerBtn} onClick={handleClick}>
                 power
             </button>
         </div>
         <h1 className={styles.display} id="display">
-          {sourceText}
+          {soundOn && sourceText}
         </h1>
         <input 
         max="1"

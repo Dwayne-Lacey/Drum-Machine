@@ -13,11 +13,13 @@ export function DrumButton(props) {
 
     const handleClick = useCallback(
         (source) => {
-        dispatch(setSourceText(source));
-        ref.current.currentTime = 0;
-        ref.current.volume = volume;
-        ref.current.play();
-        }, [dispatch, ref, volume])
+        if (soundOn) {
+            dispatch(setSourceText(source));
+            ref.current.currentTime = 0;
+            ref.current.volume = volume;
+            ref.current.play();
+        }
+        }, [dispatch, ref, volume, soundOn])
     
     const handleKeyPress = useCallback(
         (e) => {
