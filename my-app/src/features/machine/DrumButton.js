@@ -28,7 +28,16 @@ export function DrumButton(props) {
             dispatch(setSourceText(source));
             ref.current.currentTime = 0;
             ref.current.volume = volume;
-            ref.current.play();
+            console.log(ref.current.currentTime);
+            let playPromise = ref.current.play();
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+
+                })
+                .catch(error => {
+                    console.log("Playback has errored.");
+                });
+            }
         }
         }, [dispatch, ref, volume, soundOn])
     
