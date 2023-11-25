@@ -1,7 +1,7 @@
 .drumMachine {
     margin: auto auto;
     background-color: #3E5C76;
-    width: 100%;
+    width: 90%;
     display: flex;
     border-radius: 2rem;
     max-width: 600px;

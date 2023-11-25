@@ -8,8 +8,6 @@
     transition: 200ms;
 }
 
-
-
 .drum-pad:focus {
     transform: translateY(.3rem);
     box-shadow: none;
