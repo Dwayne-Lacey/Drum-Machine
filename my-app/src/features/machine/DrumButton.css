@@ -1,0 +1,17 @@
+.drum-pad {
+    flex: 2;
+    background-color: #98D2EB;
+    padding: 2rem;
+    border: none;
+    border-radius: 50%;
+    box-shadow: .2rem .2rem .2rem #222222;
+    transition: 200ms;
+}
+
+
+
+.drum-pad:focus {
+    transform: translateY(.3rem);
+    box-shadow: none;
+    outline: none;
+}

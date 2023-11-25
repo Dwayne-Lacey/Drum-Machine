@@ -1,0 +1,93 @@
+.buttonContainer {
+    background-color: #0D1321;
+    padding: .5rem;
+    margin: 0;
+    border-radius: 2rem;
+    width: 5rem;
+    height: 1rem;
+} 
+
+.button {
+    margin: auto;
+    padding: 0;
+    background-color: #1D2D44;
+    border: solid 1px white;
+    border-radius: 10px;
+    display: block;
+    height: 1rem;
+    width: 3rem;
+    color: white;
+    text-align: center;
+    transition: 200ms;
+}
+
+.buttonOn {
+    transform: translateX(1rem);
+    transition: linear 200ms;
+}
+
+.buttonOff {
+    transform: translateX(-1rem);
+    transition: linear 200ms;
+}
+
+.displayContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 1rem auto;
+}
+
+.display {
+    color: #0D1321;
+}
+
+.volumeTitle {
+    height: 30px;
+    color: #0D1321
+}
+
+.volumeBar {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 15rem;
+    margin-bottom: 1rem;
+}
+
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+input[type="range"]::-webkit-slider-runnable-track {
+    background: #0D1321;
+    height: 0.5rem;
+    border-radius: 1rem;
+}
+  
+/******** Firefox ********/
+input[type="range"]::-moz-range-track {
+    background: #0D1321;
+    height: 0.5rem;
+    border-radius: 1rem;
+}
+
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 1rem;
+    background-color: #98D2EB;
+    width: 1rem;
+    border-radius: 100%;
+    margin-top: -4px;
+}
+
+  /******** Firefox ********/
+  input[type="range"]::-moz-range-thumb {
+    border: none; /*Removes extra border that FF applies*/
+    height: 1rem;
+    background-color: #98D2EB;
+    width: 1rem;
+    border-radius: 100%;
+    margin-top: -4px;
+}

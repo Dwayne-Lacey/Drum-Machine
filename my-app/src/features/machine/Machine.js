@@ -7,7 +7,7 @@ export function Machine() {
   
   return (
     // Props to pass in for buttons, buttonName, soundSrc, buttonKey
-    <div id="drum-machine">
+    <div id="drum-machine" className={styles.drumMachine}>
       <div id="button-container" className={styles.buttonContainer}>
         <DrumButton 
         soundSrc="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3"

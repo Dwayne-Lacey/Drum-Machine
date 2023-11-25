@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  value: "",
+  value: "Drum Machine",
   soundOn: true,
   volume: 0.5,
   altSounds: false

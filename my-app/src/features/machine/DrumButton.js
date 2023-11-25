@@ -4,17 +4,26 @@ import { setSourceText,
         selectSound,
         selectVolume,
         selectAltSounds } from './machineSlice';
-import styles from './DrumButton.module.css';
+import styles from './DrumButton.css';
 
 export function DrumButton(props) {
     const dispatch = useDispatch();
     const ref = useRef(null);
+    const btnRef = useRef(null);
     const soundOn = useSelector(selectSound);
     const volume = useSelector(selectVolume);
     const altSounds = useSelector(selectAltSounds);
 
     const handleClick = useCallback(
-        (source) => {
+        (source, keypress) => {
+        if (keypress) {
+            setTimeout(() => {
+            btnRef.current.blur();
+            }, 100);
+        }
+        else {
+            btnRef.current.blur();
+        }
         if (soundOn) {
             dispatch(setSourceText(source));
             ref.current.currentTime = 0;
@@ -26,7 +35,8 @@ export function DrumButton(props) {
     const handleKeyPress = useCallback(
         (e) => {
             if (e.keyCode === props.keyCode) {
-                handleClick(altSounds ? props.altName.replace("-", " ") : props.buttonName.replace("-", " "));
+                btnRef.current.focus();
+                handleClick(altSounds ? props.altName.replace("-", " ") : props.buttonName.replace("-", " "), true);
             }
         }, [handleClick, props.keyCode, props.buttonName, altSounds, props.altName]
     );
@@ -42,8 +52,9 @@ export function DrumButton(props) {
     <button
         className="drum-pad"
         id={altSounds ? props.altName : props.buttonName}
+        ref={btnRef}
         aria-label={altSounds ? props.altName.replace("-", " ") : props.buttonName.replace("-", " ")}
-        onClick={() => {handleClick(altSounds ? props.altName.replace("-", " ") : props.buttonName.replace("-", " "))}}
+        onClick={() => {handleClick(altSounds ? props.altName.replace("-", " ") : props.buttonName.replace("-", " "), false)}}
     >
         {props.buttonKey}
         {soundOn && 
